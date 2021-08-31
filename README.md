@@ -1,6 +1,6 @@
 # Network Share
 
-Share files and text within the same network. WIP
+Share files in realtime within the same network. WIP
 
 ## TODO
 
