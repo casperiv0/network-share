@@ -1,11 +1,11 @@
 {
   "name": "network-share",
+  "license": "MIT",
   "description": "Share files and text within the same network.",
   "scripts": {
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,css,json}\" --ignore-path .gitignore",
     "lint": "eslint . --ext .ts,.js,.tsx,.jsx"
   },
-  "license": "MIT",
   "devDependencies": {
     "@casper124578/eslint-config": "^0.0.16",
     "@casper124578/eslint-config-next": "^0.1.0",
