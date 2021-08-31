@@ -11,8 +11,15 @@ export const Dropzone = () => {
 
   return (
     <div style={{ height: "50vh" }}>
-      <FileDrop className="w-full h-full flex items-center justify-center" onDrop={handleDrop}>
-        Drop your files here!
+      <FileDrop
+        className="text-white w-full h-full flex items-center justify-center"
+        onDrop={handleDrop}
+      >
+        <p className="text-center">
+          Drop your files here!
+          <br />
+          You will see your files upload in realtime below!
+        </p>
       </FileDrop>
     </div>
   );

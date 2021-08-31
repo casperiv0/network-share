@@ -9,19 +9,33 @@ interface FilesData {
 }
 
 export const Incoming = () => {
-  const [files, setFiles] = React.useState<File[]>([]);
+  const [files, setFiles] = React.useState<(File & { preview: string })[]>([]);
+
+  function handleDownload(e: React.MouseEvent<HTMLButtonElement, MouseEvent>, file: File) {
+    e.preventDefault();
+
+    const target = e.target as HTMLVideoElement;
+    console.log(e.target);
+
+    if (["video", "img"].includes(target.nodeName.toLowerCase())) {
+      return;
+    }
+    download(file);
+  }
 
   React.useEffect(() => {
     const handler = ({ files }: { files: FilesData }) => {
-      console.log(JSON.stringify(files, null, 2));
-
       const entries = Object.entries(files) as [string, FileData][];
 
       const v = entries.map(([, file]) => {
-        return new File([file.data], file.name, { type: file.mimetype });
+        const f = new File([file.data], file.name, { type: file.mimetype });
+
+        (f as any).preview = URL.createObjectURL(f);
+
+        return f as File & { preview: string };
       });
 
-      setFiles((p) => [...p, ...v]);
+      setFiles((p) => [...v, ...p]);
     };
 
     socket.on(Events.FILE_UPLOAD, handler);
@@ -32,22 +46,33 @@ export const Incoming = () => {
   }, []);
 
   return (
-    <div className={files.length > 0 ? "flex flex-wrap" : undefined} style={{ height: "50vh" }}>
+    <div className="border-t-2 pt-4 border-gray-300 overflow-auto h-[50vh]">
       {files.length <= 0 ? (
-        <p className="text-center">There aren&apos;t any files yet!</p>
+        <p className="text-white text-center">
+          Files will show here when there are any. Click any of them to download it!
+        </p>
       ) : (
-        files.map((file) => {
-          return (
-            <button
-              key={file.size * Math.random() * 20}
-              className="py-2 px-10 rounded-md m-1 text-white bg-gray-500 max-w-md max-h-12"
-              onClick={() => download(file)}
-              title="Click to download"
-            >
-              {file.name}
-            </button>
-          );
-        })
+        <div className="flex flex-wrap">
+          {files.map((file) => {
+            return (
+              <button
+                key={file.size * Math.random() * 20}
+                className="overflow-hidden h-full rounded-md m-1 text-white bg-gray-700 max-w-md"
+                onClick={(e) => handleDownload(e, file)}
+                title="Click to download"
+              >
+                {file.type.startsWith("video") ? (
+                  <video controls src={file.preview} />
+                ) : file.type.startsWith("image") ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img loading="lazy" src={file.preview} />
+                ) : null}
+
+                <p className="p-3">{file.name}</p>
+              </button>
+            );
+          })}
+        </div>
       )}
     </div>
   );

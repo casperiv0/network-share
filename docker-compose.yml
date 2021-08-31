@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  api:
+    container_name: "network-share-api"
+
+    image: node:16
+    command: "sh -c 'cd api && npm run start'"
+    ports:
+      - "3030:3030"
+    expose:
+      - 3030
+    volumes:
+      - .:/srv/api
+    env_file:
+      - .env
+    working_dir: /srv/api
+    networks:
+      - web
+
+  client:
+    container_name: "network-share-client"
+    image: node:16
+    command: "sh -c 'cd client && npm run start'"
+    ports:
+      - "3000:3000"
+    expose:
+      - 3000
+    volumes:
+      - .:/srv/client
+    working_dir: /srv/client
+    depends_on:
+      - api
+    networks:
+      - web
+    env_file:
+      - .env
+
+networks:
+  web:
+    external: true
