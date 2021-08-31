@@ -1,0 +1,19 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "module": "CommonJS",
+    "target": "ESNext",
+
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "utils/*": ["./src/utils/*"],
+      "structures/*": ["./src/structures/*"],
+      "services/*": ["./src/services/*"],
+      "types/*": ["./src/types/*"]
+    }
+  }
+}

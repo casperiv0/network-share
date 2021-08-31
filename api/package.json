@@ -1,0 +1,17 @@
+{
+  "name": "@network-share/api",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "dependencies": {
+    "globby": "^12.0.2",
+    "socket.io": "^4.2.0"
+  },
+  "devDependencies": {
+    "esbuild-register": "^3.0.0",
+    "nodemon": "^2.0.12",
+    "tsconfig-paths": "^3.11.0",
+    "typescript": "^4.4.2"
+  }
+}
