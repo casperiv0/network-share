@@ -15,7 +15,6 @@ export const Incoming = () => {
     e.preventDefault();
 
     const target = e.target as HTMLVideoElement;
-    console.log(e.target);
 
     if (["video", "img"].includes(target.nodeName.toLowerCase())) {
       return;

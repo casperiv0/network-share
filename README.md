@@ -4,11 +4,12 @@ Share files in realtime within the same network. WIP
 
 ## TODO
 
+- [x] Docker setup
+- [x] express cors stuff
+- [ ] better user interactivity (success, error states)
 - [ ] List connected users
 - [ ] Loading states
-- [ ] Docker setup
 - [ ] install docs
-- [ ] express cors stuff
 
 ## Disclaimer
 
