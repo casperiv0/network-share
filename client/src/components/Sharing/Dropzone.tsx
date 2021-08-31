@@ -15,7 +15,7 @@ export const Dropzone = () => {
       })),
     );
 
-    // TODO: don't send buffers via socket.io, setup express server?
+    // todo: don't send buffers via socket.io, setup express server?
     socket.emit(Events.FILE_UPLOAD, { files: data });
   }
 

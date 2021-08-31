@@ -38,7 +38,7 @@ export const Incoming = () => {
   return (
     <div className={files.length > 0 ? "flex flex-wrap" : undefined} style={{ height: "50vh" }}>
       {files.length <= 0 ? (
-        <p className="text-center">There aren't any files yet!</p>
+        <p className="text-center">There aren&apos;t any files yet!</p>
       ) : (
         files.map((file) => {
           return (
