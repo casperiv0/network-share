@@ -1,20 +1,11 @@
 import * as React from "react";
 import { socket } from "lib/socket";
 import { Events } from "types/Events";
-
-function download(name: string, file: File) {
-  const link = document.createElement("a");
-  link.href = window.URL.createObjectURL(file);
-  link.download = name;
-  link.click();
-}
+import { FileData } from "types/FileData";
+import { download } from "lib/download";
 
 interface FilesData {
-  files: {
-    name: string;
-    buffer: ArrayBuffer;
-    type: string;
-  }[];
+  files: Record<string, FileData>;
 }
 
 export const Incoming = () => {
@@ -22,10 +13,15 @@ export const Incoming = () => {
 
   React.useEffect(() => {
     const handler = ({ files }: { files: FilesData }) => {
-      console.log(files.files);
+      console.log(JSON.stringify(files, null, 2));
 
-      const d = files.files.map((file) => new File([file.buffer], file.name, { type: file.type }));
-      setFiles((p) => [...p, ...d]);
+      const entries = Object.entries(files) as [string, FileData][];
+
+      const v = entries.map(([, file]) => {
+        return new File([file.data], file.name, { type: file.mimetype });
+      });
+
+      setFiles((p) => [...p, ...v]);
     };
 
     socket.on(Events.FILE_UPLOAD, handler);
@@ -45,7 +41,7 @@ export const Incoming = () => {
             <button
               key={file.size * Math.random() * 20}
               className="py-2 px-10 rounded-md m-1 text-white bg-gray-500 max-w-md max-h-12"
-              onClick={() => download(file.name, file)}
+              onClick={() => download(file)}
               title="Click to download"
             >
               {file.name}

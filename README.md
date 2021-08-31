@@ -4,6 +4,7 @@ Share files and text within the same network. WIP
 
 ## TODO
 
-- [ ] fix large buffers
+- [ ] List connected users
+- [ ] Loading states
 - [ ] Docker setup
 - [ ] install docs

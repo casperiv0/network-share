@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Dropzone } from "components/Sharing/Dropzone";
-import { Incoming } from "components/Sharing/Incoming";
+import { Dropzone } from "components/Dropzone";
+import { Incoming } from "components/Incoming";
 
 export default function Index() {
   return (
