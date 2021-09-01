@@ -1,14 +1,10 @@
 # Network Share
 
-Share files in realtime within the same network. WIP
+Share files in realtime within the same network.
 
-## TODO
+## Installation
 
-- [x] Docker setup
-- [x] express cors stuff
-- [x] List connected users
-- [ ] better user interactivity (success, error states)
-- [ ] install docs
+[Check the install docs here](./docs/README.md)
 
 ## Disclaimer
 
