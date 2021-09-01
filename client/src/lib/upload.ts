@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { API_URL } from "./constants";
 
 export async function upload(files: File[]) {
@@ -8,10 +9,17 @@ export async function upload(files: File[]) {
       fd.append(file.name, file);
     }
 
-    await fetch(`${API_URL}/upload`, {
-      method: "POST",
-      body: fd,
-    });
+    await toast.promise(
+      fetch(`${API_URL}/upload`, {
+        method: "POST",
+        body: fd,
+      }),
+      {
+        error: "Could not upload the file. Please try again later.",
+        success: "Success!",
+        loading: "Uploading...",
+      },
+    );
   } catch (e) {
     console.error(e);
   }
