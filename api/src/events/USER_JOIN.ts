@@ -3,9 +3,6 @@ import { SocketService } from "src/services/Socket";
 import { Events } from "types/Events";
 import { Event } from "structures/Event";
 
-/**
- * note: this is currently not being used.
- */
 export default class USER_JOIN extends Event {
   constructor(service: SocketService) {
     super(service, Events.USER_JOIN);
@@ -16,6 +13,6 @@ export default class USER_JOIN extends Event {
       this.service.users.set(socket.id, { socketId: socket.id });
     }
 
-    socket.broadcast.emit(Events.USER_JOIN, this.service.users.get(socket.id));
+    this.service.io.emit(Events.USER_JOIN, this.service.users.size);
   }
 }

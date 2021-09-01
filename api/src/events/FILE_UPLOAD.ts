@@ -9,8 +9,6 @@ export default class FILE_UPLOAD extends Event {
   }
 
   async handle(socket: Socket, data: any) {
-    console.log(data);
-
     socket.broadcast.emit(Events.FILE_UPLOAD, { files: data });
   }
 }

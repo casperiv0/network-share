@@ -9,8 +9,8 @@ export default class DISCONNECT extends Event {
   }
 
   async handle(socket: Socket) {
-    socket.broadcast.emit(Events.DISCONNECT, this.service.users.get(socket.id));
-
     this.service.users.delete(socket.id);
+
+    this.service.io.emit(Events.USER_JOIN, this.service.users.size);
   }
 }

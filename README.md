@@ -6,9 +6,8 @@ Share files in realtime within the same network. WIP
 
 - [x] Docker setup
 - [x] express cors stuff
+- [x] List connected users
 - [ ] better user interactivity (success, error states)
-- [ ] List connected users
-- [ ] Loading states
 - [ ] install docs
 
 ## Disclaimer

@@ -3,10 +3,13 @@ import { Server, ServerOptions } from "socket.io";
 import { Event } from "structures/Event";
 import { Events } from "types/Events";
 import { loadEvents } from "utils/loadEvents";
+import { CLIENT_URL } from "utils/constants";
+
+import DISCONNECT from "src/events/DISCONNECT";
 
 const SOCKET_OPTIONS: Partial<ServerOptions> = {
   cors: {
-    origin: "http://localhost:3000",
+    origin: CLIENT_URL,
   },
 };
 
@@ -34,8 +37,12 @@ export class SocketService {
     this.events = await loadEvents(this);
 
     this.io.on("connection", (socket) => {
+      socket.on("disconnect", () => new DISCONNECT(this).handle(socket));
+
       this.events.forEach((event) => {
-        socket.on(event.name, event.handle.bind(null, socket));
+        socket.on(event.name, (...args: any[]) => {
+          event.handle(socket, ...args);
+        });
       });
     });
 

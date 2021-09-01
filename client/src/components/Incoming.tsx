@@ -16,7 +16,7 @@ export const Incoming = () => {
 
     const target = e.target as HTMLVideoElement;
 
-    if (["video", "img"].includes(target.nodeName.toLowerCase())) {
+    if (["video"].includes(target.nodeName.toLowerCase())) {
       return;
     }
     download(file);

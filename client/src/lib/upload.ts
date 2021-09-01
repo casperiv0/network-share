@@ -1,3 +1,5 @@
+import { API_URL } from "./constants";
+
 export async function upload(files: File[]) {
   try {
     const fd = new FormData();
@@ -6,11 +8,11 @@ export async function upload(files: File[]) {
       fd.append(file.name, file);
     }
 
-    await fetch("http://localhost:3030/upload", {
+    await fetch(`${API_URL}/upload`, {
       method: "POST",
       body: fd,
     });
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
