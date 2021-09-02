@@ -19,4 +19,5 @@
 1. `cd client`
 2. build it: `npm run build`
 3. Go back to the main folder: `cd ..`
-4. Start Docker: `docker-compose up`
+4. Update the `.env` file
+5. Start Docker: `docker-compose up`
