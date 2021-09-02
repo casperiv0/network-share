@@ -6,6 +6,7 @@ import { socket } from "lib/socket";
 import { Events } from "types/Events";
 
 export default function Index() {
+  const [state, setState] = React.useState<"error" | null>(null);
   const [users, setUsers] = React.useState<number | null>(null);
   const usersText = users === 1 ? "user" : "users";
 
@@ -14,14 +15,22 @@ export default function Index() {
   }, []);
 
   React.useEffect(() => {
-    const handler = (users: number) => {
+    const usersHandler = (users: number) => {
       setUsers(users);
     };
 
-    socket.on(Events.USER_JOIN, handler);
+    const errorHandler = () => setState("error");
+    const connectHandler = () => setState(null);
+
+    socket.on(Events.USER_JOIN, usersHandler);
+    socket.on("connect_error", errorHandler);
+
+    socket.on("connect", connectHandler);
 
     return () => {
-      socket.off(Events.USER_JOIN, handler);
+      socket.off(Events.USER_JOIN, usersHandler);
+      socket.off("connect_error", errorHandler);
+      socket.off("connect", connectHandler);
     };
   }, []);
 
@@ -31,12 +40,22 @@ export default function Index() {
         <title>Share files in realtime within the same network</title>
       </Head>
 
-      <Dropzone />
-      <Incoming />
+      {state === "error" ? (
+        <div className="h-screen w-full flex items-center justify-center p-2">
+          <p className="text-white font-bold text-center">
+            An error occurred connecting to the socket. Please try again later.
+          </p>
+        </div>
+      ) : (
+        <>
+          <Dropzone />
+          <Incoming />
 
-      <div className="absolute top-2 left-2 text-white font-medium">
-        {users} {usersText} connected
-      </div>
+          <div className="absolute top-2 left-2 text-white font-medium">
+            {users} {usersText} connected
+          </div>
+        </>
+      )}
     </div>
   );
 }
