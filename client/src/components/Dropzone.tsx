@@ -19,11 +19,12 @@ export const Dropzone = () => {
     };
   }, []);
 
-  async function handleDrop(event: React.DragEvent<HTMLDivElement>) {
+  async function handleDrop(
+    event: React.DragEvent<HTMLDivElement> | React.ChangeEvent<HTMLInputElement>,
+  ) {
     event.preventDefault();
 
-    const files = event.dataTransfer.files ?? [];
-
+    const files = ("dataTransfer" in event ? event.dataTransfer.files : event.target.files) ?? [];
     if (files === null) return;
 
     upload([...files]);
@@ -31,6 +32,22 @@ export const Dropzone = () => {
 
   return (
     <div ref={ref} style={{ height: "50vh" }}>
+      <div>
+        <label
+          htmlFor="select_files"
+          className="bg-gray-500 z-10 rounded-lg absolute top-5 right-5 py-2 px-5 cursor-pointer"
+        >
+          Or select files
+        </label>
+        <input
+          id="select_files"
+          type="file"
+          multiple
+          className="hidden"
+          placeholder="or select files"
+          onChange={handleDrop}
+        />
+      </div>
       <div
         className="text-white w-full h-full flex items-center justify-center"
         onDrop={handleDrop}
