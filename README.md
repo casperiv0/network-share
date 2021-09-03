@@ -11,6 +11,11 @@ Share files in realtime within the same network.
 I know there's a ton of other repositories out there that do the same!
 I wanted to learn more so decided to make my own!
 
+## Demo
+
+[View a preview video here](https://youtu.be/hIOLE4cHqNE)
+
+
 ## What I learnd
 
 - Better usage of TailwindCSS
