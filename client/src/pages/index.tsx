@@ -4,11 +4,15 @@ import { Dropzone } from "components/Dropzone";
 import { Incoming } from "components/Incoming";
 import { socket } from "lib/socket";
 import { Events } from "types/Events";
+import { useDots } from "lib/useDots";
+
+type State = "error" | "loading" | null;
 
 export default function Index() {
-  const [state, setState] = React.useState<"error" | null>(null);
+  const [state, setState] = React.useState<State>("loading");
   const [users, setUsers] = React.useState<number | null>(null);
   const usersText = users === 1 ? "user" : "users";
+  const dots = useDots(state === "loading");
 
   React.useEffect(() => {
     socket.emit(Events.USER_JOIN);
@@ -40,7 +44,11 @@ export default function Index() {
         <title>Share files in realtime within the same network</title>
       </Head>
 
-      {state === "error" ? (
+      {state === "loading" ? (
+        <div className="h-screen w-full flex items-center justify-center p-2">
+          <p className="text-white text-center">Loading connection{dots}</p>
+        </div>
+      ) : state === "error" ? (
         <div className="h-screen w-full flex items-center justify-center p-2">
           <p className="text-white font-bold text-center">
             An error occurred connecting to the socket. Please try again later.
