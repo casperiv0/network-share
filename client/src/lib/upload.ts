@@ -15,7 +15,9 @@ export async function upload(files: File[]) {
         body: fd,
       }),
       {
-        error: "Could not upload the file. Please try again later.",
+        error: (err) => {
+          return err.message || "Could not upload the file. Please try again later.";
+        },
         success: "Success!",
         loading: "Uploading...",
       },
