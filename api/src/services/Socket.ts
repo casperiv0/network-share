@@ -17,6 +17,8 @@ export class SocketService {
   private server: Application;
   private events: Map<string, Event> = new Map();
   io: Server;
+
+  files: Map<string, any> = new Map();
   users: Map<string, any> = new Map();
 
   constructor(expressServer: Application) {
@@ -50,8 +52,16 @@ export class SocketService {
   }
 
   async handleFileUpload(req: Request, res: Response) {
+    if (!req.files) {
+      return res.status(400).send();
+    }
+
     this.io.sockets.emit(Events.FILE_UPLOAD, { files: req.files });
 
-    res.status(204).send();
+    for (const f in req.files) {
+      this.files.set(f, req.files[f]!);
+    }
+
+    return res.status(204).send();
   }
 }

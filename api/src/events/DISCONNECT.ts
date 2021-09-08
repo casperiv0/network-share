@@ -12,5 +12,9 @@ export default class DISCONNECT extends Event {
     this.service.users.delete(socket.id);
 
     this.service.io.emit(Events.USER_JOIN, this.service.users.size);
+
+    if (this.service.users.size <= 0) {
+      this.service.files.clear();
+    }
   }
 }
