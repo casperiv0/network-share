@@ -39,17 +39,17 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="bg-gray-800 flex flex-col">
+    <div className="bg-gray-800 flex flex-col px-4">
       <Head>
         <title>Share files in realtime within the same network</title>
       </Head>
 
       {state === "loading" ? (
-        <div className="h-screen w-full flex items-center justify-center p-2">
+        <div className="h-screen w-full flex items-center justify-center">
           <p className="text-white text-center">Loading connection{dots}</p>
         </div>
       ) : state === "error" ? (
-        <div className="h-screen w-full flex items-center justify-center p-2">
+        <div className="h-screen w-full flex items-center justify-center">
           <p className="text-white font-bold text-center">
             An error occurred connecting to the socket. Please try again later.
           </p>
@@ -59,7 +59,7 @@ export default function Index() {
           <Dropzone />
           <Incoming />
 
-          <div className="absolute top-2 left-2 text-white font-medium">
+          <div className="absolute top-2 left-4 text-white font-medium">
             {users} {usersText} connected
           </div>
         </>
