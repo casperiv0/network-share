@@ -35,7 +35,7 @@ export const Dropzone = () => {
       <div>
         <label
           htmlFor="select_files"
-          className="bg-gray-500 z-10 rounded-lg absolute top-5 right-4 py-2 px-5 cursor-pointer transition-colors hover:bg-gray-400"
+          className="bg-darker-gray text-white z-10 rounded-lg absolute top-5 right-4 py-2 px-5 cursor-pointer transition-colors border-[1.5px] border-transparent hover:border-gray-300"
         >
           Or select files
         </label>

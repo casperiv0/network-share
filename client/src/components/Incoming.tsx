@@ -56,7 +56,7 @@ export const Incoming = () => {
             return (
               <button
                 key={file.size * Math.random() * 20}
-                className="overflow-hidden h-full rounded-md m-1 text-white bg-gray-700 max-w-md"
+                className="overflow-hidden h-full rounded-md m-1 text-white bg-darker-gray max-w-md"
                 onClick={(e) => handleDownload(e, file)}
                 title="Click to download"
               >

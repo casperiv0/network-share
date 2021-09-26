@@ -39,7 +39,7 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="bg-gray-800 flex flex-col px-4">
+    <div className="bg-dark-gray flex flex-col px-4">
       <Head>
         <title>Share files in realtime within the same network</title>
       </Head>
