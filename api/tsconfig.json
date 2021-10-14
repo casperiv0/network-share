@@ -15,5 +15,6 @@
       "services/*": ["./src/services/*"],
       "types/*": ["./src/types/*"]
     }
-  }
+  },
+  "include": ["src"]
 }
