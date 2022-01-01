@@ -16,7 +16,16 @@
     "@casper124578/eslint-config": "^2.3.2",
     "@casper124578/eslint-config-next": "^1.2.1",
     "@casper124578/eslint-config-react": "^2.2.0",
+    "@next/eslint-plugin-next": "latest",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "^5.8.1",
     "eslint": "^8.6.0",
+    "eslint-plugin-json": "latest",
+    "eslint-plugin-jsx-a11y": "latest",
+    "eslint-plugin-prettier": "latest",
+    "eslint-plugin-promise": "latest",
+    "eslint-plugin-react": "latest",
+    "eslint-plugin-react-hooks": "latest",
     "prettier": "^2.5.1",
     "typescript": "^4.5.4"
   }
