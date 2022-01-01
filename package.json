@@ -7,7 +7,7 @@
     "lint": "eslint . --ext .ts,.js,.tsx,.jsx"
   },
   "devDependencies": {
-    "@casper124578/eslint-config": "^1.0.0",
+    "@casper124578/eslint-config": "^2.3.1",
     "@casper124578/eslint-config-next": "^1.0.0",
     "@casper124578/eslint-config-react": "^0.1.2",
     "eslint": "^7.32.0",
