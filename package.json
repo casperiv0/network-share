@@ -1,5 +1,6 @@
 {
   "name": "network-share",
+  "version": "1.0.0",
   "license": "MIT",
   "private": true,
   "packageManager": "yarn@3.1.1",
