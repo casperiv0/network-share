@@ -1,6 +1,11 @@
 {
   "name": "network-share",
   "license": "MIT",
+  "private": true,
+  "packageManager": "yarn@3.1.1",
+  "workspaces": [
+    "packages/**"
+  ],
   "description": "Share files and text within the same network.",
   "scripts": {
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,css,json}\" --ignore-path .gitignore",
