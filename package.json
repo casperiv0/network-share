@@ -9,7 +9,9 @@
   ],
   "scripts": {
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,css,json}\" --ignore-path .gitignore",
-    "lint": "eslint . --ext .ts,.js,.tsx,.jsx"
+    "lint": "eslint . --ext .ts,.js,.tsx,.jsx",
+    "dev": "yarn turbo run dev --parallel",
+    "build": "yarn turbo run build"
   },
   "devDependencies": {
     "@casper124578/eslint-config": "^4.4.0",
