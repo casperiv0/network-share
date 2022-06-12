@@ -4,7 +4,7 @@ import { Dropzone } from "components/Dropzone";
 import { Incoming } from "components/Incoming";
 import { socket } from "lib/socket";
 import { Events } from "types/Events";
-import { useDots } from "lib/useDots";
+import { useDots } from "@casper124578/useful/hooks/useDots";
 
 type State = "error" | "loading" | null;
 

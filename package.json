@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "network-share",
   "license": "MIT",
   "packageManager": "yarn@3.2.1",

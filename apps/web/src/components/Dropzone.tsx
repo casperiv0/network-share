@@ -25,8 +25,6 @@ export const Dropzone = () => {
     event.preventDefault();
 
     const files = ("dataTransfer" in event ? event.dataTransfer.files : event.target.files) ?? [];
-    if (files === null) return;
-
     upload([...files]);
   }
 

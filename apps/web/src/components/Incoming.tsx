@@ -11,7 +11,7 @@ interface FilesData {
 export const Incoming = () => {
   const [files, setFiles] = React.useState<(File & { preview: string })[]>([]);
 
-  function handleDownload(e: React.MouseEvent<HTMLButtonElement, MouseEvent>, file: File) {
+  function handleDownload(e: React.MouseEvent<HTMLButtonElement>, file: File) {
     e.preventDefault();
 
     const target = e.target as HTMLVideoElement;
@@ -63,7 +63,6 @@ export const Incoming = () => {
                 {file.type.startsWith("video") ? (
                   <video controls src={file.preview} />
                 ) : file.type.startsWith("image") ? (
-                  // eslint-disable-next-line @next/next/no-img-element
                   <img loading="lazy" src={file.preview} />
                 ) : null}
 

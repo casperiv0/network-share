@@ -1,11 +1,12 @@
 {
-  "name": "@network-share/client",
+  "name": "@network-share/web",
   "scripts": {
-    "dev": "next dev -p 4000",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "@casper124578/useful": "^2.0.1",
     "next": "^12.1.6",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
