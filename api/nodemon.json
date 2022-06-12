@@ -1,5 +1,0 @@
-{
-  "watch": ["**/*.ts"],
-  "exec": "npm run start",
-  "ext": "js ts"
-}
