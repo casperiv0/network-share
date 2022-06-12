@@ -1,11 +1,11 @@
 import { Application, Request, Response } from "express";
 import { Server, ServerOptions } from "socket.io";
-import { Event } from "structures/Event";
-import { Events } from "types/Events";
-import { loadEvents } from "utils/loadEvents";
-import { CLIENT_URL } from "utils/constants";
+import { Event } from "../structures/Event.js";
+import { Events } from "../types/Events.js";
+import { loadEvents } from "../utils/loadEvents.js";
+import { CLIENT_URL } from "../utils/constants.js";
 
-import DISCONNECT from "src/events/DISCONNECT";
+import DISCONNECT from "../events/Disconnect.js";
 
 const SOCKET_OPTIONS: Partial<ServerOptions> = {
   cors: {
@@ -56,7 +56,7 @@ export class SocketService {
       return res.status(400).send();
     }
 
-    this.io.sockets.emit(Events.FILE_UPLOAD, { files: req.files });
+    this.io.sockets.emit(Events.FileUpload, { files: req.files });
 
     for (const f in req.files) {
       this.files.set(f, req.files[f]!);

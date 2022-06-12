@@ -1,6 +1,0 @@
-export enum Events {
-  DISCONNECT = "DISCONNECT",
-
-  USER_JOIN = "USER_JOIN",
-  FILE_UPLOAD = "FILE_UPLOAD",
-}

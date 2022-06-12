@@ -1,5 +1,5 @@
 import { Socket } from "socket.io";
-import { SocketService } from "src/services/Socket";
+import { SocketService } from "../services/Socket.js";
 
 export abstract class Event {
   service: SocketService;

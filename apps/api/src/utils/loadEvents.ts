@@ -1,16 +1,17 @@
+import process from "node:process";
 import { resolve } from "node:path";
 import { globby } from "globby";
-import { Event } from "structures/Event";
-import { SocketService } from "services/Socket";
+import { Event } from "../structures/Event.js";
+import { SocketService } from "../services/Socket.js";
 
 export async function loadEvents(service: SocketService) {
-  const paths = await globby("./src/events/**/*.ts");
+  const isDev = process.env.NODE_ENV === "development";
+  const path = isDev ? "./src/events/**/*.ts" : "./dist/events/**/*.js";
 
+  const paths = await globby(path);
   const map = new Map<string, Event>();
 
   for (const path of paths) {
-    delete require.cache[path];
-
     const resolved = resolve(path);
 
     const File = await (await import(resolved)).default;

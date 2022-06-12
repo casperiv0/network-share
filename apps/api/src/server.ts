@@ -1,8 +1,8 @@
 import express from "express";
 import fileUpload from "express-fileupload";
 import cors from "cors";
-import { SocketService } from "./services/Socket";
-import { CLIENT_URL } from "utils/constants";
+import { SocketService } from "./services/Socket.js";
+import { CLIENT_URL } from "./utils/constants.js";
 
 const server = express();
 server.use(
