@@ -1,7 +1,6 @@
 import * as React from "react";
 import { socket } from "lib/socket";
-import { Events } from "types/Events";
-import type { FileData } from "types/FileData";
+import { type FileData, Events } from "@network-share/types";
 import { download } from "lib/download";
 
 export const Incoming = () => {

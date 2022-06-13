@@ -5,7 +5,8 @@
   "packageManager": "yarn@3.2.1",
   "description": "Share files and text within the same network.",
   "workspaces": [
-    "apps/**"
+    "apps/**",
+    "packages/**"
   ],
   "scripts": {
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,css,json}\" --ignore-path .gitignore",

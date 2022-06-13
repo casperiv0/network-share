@@ -1,5 +1,5 @@
-import * as React from "react";
-import { AppProps } from "next/app";
+import type * as React from "react";
+import type { AppProps } from "next/app";
 import { Toaster } from "react-hot-toast";
 import "../styles/global.scss";
 

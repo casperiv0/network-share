@@ -1,10 +1,10 @@
 {
   "name": "@network-share/api",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "nodemon",
-    "build": "npx swc ./src -d dist",
+    "build": "swc ./src -d dist",
     "start": "NODE_ENV=production node dist/server.js"
   },
   "dependencies": {
@@ -16,6 +16,7 @@
     "socket.io": "^4.5.1"
   },
   "devDependencies": {
+    "@network-share/types": "workspace:*",
     "@swc/cli": "^0.1.57",
     "@swc/core": "^1.2.198",
     "@swc/helpers": "^0.3.17",

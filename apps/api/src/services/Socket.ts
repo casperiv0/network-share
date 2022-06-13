@@ -1,11 +1,12 @@
 import type { Application, Request, Response } from "express";
 import type { Event } from "../structures/Event.js";
 import { Server, ServerOptions } from "socket.io";
-import { Events } from "../types/Events.js";
+import { Events, type FileData } from "@network-share/types";
 import { loadEvents } from "../utils/loadEvents.js";
 import { CLIENT_URL } from "../utils/constants.js";
 
 import DISCONNECT from "../events/Disconnect.js";
+import type { UploadedFile } from "express-fileupload";
 
 const SOCKET_OPTIONS: Partial<ServerOptions> = {
   cors: {
@@ -18,7 +19,7 @@ export class SocketService {
   private events: Map<string, Event> = new Map();
   io: Server;
 
-  files: Map<string, any> = new Map();
+  files: Map<string, FileData> = new Map();
   users: Map<string, any> = new Map();
 
   constructor(expressServer: Application) {
@@ -60,8 +61,14 @@ export class SocketService {
       return res.status(400).send();
     }
 
-    for (const f in req.files) {
-      this.files.set(f, req.files[f]!);
+    for (const filename in req.files) {
+      const file = req.files[filename] as UploadedFile | UploadedFile[];
+
+      if (Array.isArray(file)) {
+        file.forEach((f) => this.files.set(filename, f));
+      } else {
+        this.files.set(filename, file);
+      }
     }
 
     this.io.sockets.emit(Events.FileUpload);

@@ -17,6 +17,8 @@ services:
     working_dir: /srv/api
     networks:
       - web
+    environment:
+      - NODE_ENV=production
 
   client:
     container_name: "network-share-client"
@@ -35,6 +37,8 @@ services:
       - web
     env_file:
       - .env
+    environment:
+      - NODE_ENV=production
 
 networks:
   web:

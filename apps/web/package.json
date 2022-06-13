@@ -1,5 +1,6 @@
 {
   "name": "@network-share/web",
+  "version": "0.0.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -14,6 +15,7 @@
     "socket.io-client": "^4.5.1"
   },
   "devDependencies": {
+    "@network-share/types": "workspace:*",
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
     "autoprefixer": "^10.4.7",

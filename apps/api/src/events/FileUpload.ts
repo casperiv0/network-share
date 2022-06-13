@@ -1,6 +1,6 @@
 import type { Socket } from "socket.io";
 import type { SocketService } from "../services/Socket.js";
-import { Events } from "../types/Events.js";
+import { Events } from "@network-share/types";
 import { Event } from "../structures/Event.js";
 
 export default class FILE_UPLOAD extends Event {

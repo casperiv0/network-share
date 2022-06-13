@@ -1,3 +1,9 @@
+export enum Events {
+  Disconnect = "DISCONNECT",
+  UserJoin = "USER_JOIN",
+  FileUpload = "FILE_UPLOAD",
+}
+
 export interface FileData {
   name: string;
   data: ArrayBuffer;
@@ -7,5 +13,4 @@ export interface FileData {
   truncated: boolean;
   mimetype: string;
   md5: string;
-  contents: string;
 }

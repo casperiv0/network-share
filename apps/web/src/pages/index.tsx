@@ -3,7 +3,7 @@ import Head from "next/head";
 import { Dropzone } from "components/Dropzone";
 import { Incoming } from "components/Incoming";
 import { socket } from "lib/socket";
-import { Events } from "types/Events";
+import { Events } from "@network-share/types";
 import { useDots } from "@casper124578/useful/hooks/useDots";
 
 type State = "error" | "loading" | null;
