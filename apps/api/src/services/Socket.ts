@@ -20,7 +20,7 @@ export class SocketService {
   io: Server;
 
   files: Map<string, FileData> = new Map();
-  users: Map<string, any> = new Map();
+  users: Map<string, { socketId: string }> = new Map();
 
   constructor(expressServer: Application) {
     const port = parseInt(process.env.API_PORT ?? "3030");
