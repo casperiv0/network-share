@@ -36,10 +36,10 @@ export const Incoming = () => {
       setFiles(newFiles);
     };
 
-    socket.on(Events.FILE_UPLOAD, handler);
+    socket.on(Events.FileUpload, handler);
 
     return () => {
-      socket.off(Events.FILE_UPLOAD, handler);
+      socket.off(Events.FileUpload, handler);
     };
   }, []);
 

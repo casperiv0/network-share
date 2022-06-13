@@ -15,7 +15,7 @@ export default function Index() {
   const dots = useDots(state === "loading");
 
   React.useEffect(() => {
-    socket.emit(Events.USER_JOIN);
+    socket.emit(Events.UserJoin);
   }, []);
 
   React.useEffect(() => {
@@ -26,13 +26,13 @@ export default function Index() {
     const errorHandler = () => setState("error");
     const connectHandler = () => setState(null);
 
-    socket.on(Events.USER_JOIN, usersHandler);
+    socket.on(Events.UserJoin, usersHandler);
     socket.on("connect_error", errorHandler);
 
     socket.on("connect", connectHandler);
 
     return () => {
-      socket.off(Events.USER_JOIN, usersHandler);
+      socket.off(Events.UserJoin, usersHandler);
       socket.off("connect_error", errorHandler);
       socket.off("connect", connectHandler);
     };

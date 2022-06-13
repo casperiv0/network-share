@@ -5,8 +5,8 @@ import type { Event } from "../structures/Event.js";
 import type { SocketService } from "../services/Socket.js";
 
 export async function loadEvents(service: SocketService) {
-  const isDev = process.env.NODE_ENV === "development";
-  const path = isDev ? "./src/events/**/*.ts" : "./dist/events/**/*.js";
+  const isProd = process.env.NODE_ENV === "production";
+  const path = isProd ? "./dist/events/**/*.js" : "./src/events/**/*.ts";
 
   const paths = await globby(path);
   const map = new Map<string, Event>();
