@@ -1,6 +1,6 @@
-import { Application, Request, Response } from "express";
+import type { Application, Request, Response } from "express";
+import type { Event } from "../structures/Event.js";
 import { Server, ServerOptions } from "socket.io";
-import { Event } from "../structures/Event.js";
 import { Events } from "../types/Events.js";
 import { loadEvents } from "../utils/loadEvents.js";
 import { CLIENT_URL } from "../utils/constants.js";
@@ -32,6 +32,10 @@ export class SocketService {
       SOCKET_OPTIONS,
     );
 
+    this.server.get("/files", (_req: Request, res: Response) => {
+      res.json({ files: Array.from(this.files.entries()) });
+    });
+
     this.init();
   }
 
@@ -56,12 +60,11 @@ export class SocketService {
       return res.status(400).send();
     }
 
-    this.io.sockets.emit(Events.FileUpload, { files: req.files });
-
     for (const f in req.files) {
       this.files.set(f, req.files[f]!);
     }
 
+    this.io.sockets.emit(Events.FileUpload);
     return res.status(204).send();
   }
 }

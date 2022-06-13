@@ -7,4 +7,5 @@ export interface FileData {
   truncated: boolean;
   mimetype: string;
   md5: string;
+  contents: string;
 }

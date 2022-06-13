@@ -1,12 +1,8 @@
 import * as React from "react";
 import { socket } from "lib/socket";
 import { Events } from "types/Events";
-import { FileData } from "types/FileData";
+import type { FileData } from "types/FileData";
 import { download } from "lib/download";
-
-interface FilesData {
-  files: Record<string, FileData>;
-}
 
 export const Incoming = () => {
   const [files, setFiles] = React.useState<(File & { preview: string })[]>([]);
@@ -23,18 +19,21 @@ export const Incoming = () => {
   }
 
   React.useEffect(() => {
-    const handler = ({ files }: { files: FilesData }) => {
-      const entries = Object.entries(files) as [string, FileData][];
+    const handler = async () => {
+      const data = (await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/files`)).json()) as {
+        files: [string, FileData][];
+      };
 
-      const v = entries.map(([, file]) => {
-        const f = new File([file.data], file.name, { type: file.mimetype });
+      const entries = data.files;
+      const newFiles = entries.map(([, _file]) => {
+        const file = new File([Buffer.from(_file.data)], _file.name, { type: _file.mimetype });
 
-        (f as any).preview = URL.createObjectURL(f);
+        (file as any).preview = URL.createObjectURL(file);
 
-        return f as File & { preview: string };
+        return file as File & { preview: string };
       });
 
-      setFiles((p) => [...v, ...p]);
+      setFiles(newFiles);
     };
 
     socket.on(Events.FILE_UPLOAD, handler);

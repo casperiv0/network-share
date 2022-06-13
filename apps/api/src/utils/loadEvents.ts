@@ -1,8 +1,8 @@
 import process from "node:process";
 import { resolve } from "node:path";
 import { globby } from "globby";
-import { Event } from "../structures/Event.js";
-import { SocketService } from "../services/Socket.js";
+import type { Event } from "../structures/Event.js";
+import type { SocketService } from "../services/Socket.js";
 
 export async function loadEvents(service: SocketService) {
   const isDev = process.env.NODE_ENV === "development";

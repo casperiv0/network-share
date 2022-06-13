@@ -1,5 +1,5 @@
-import { Socket } from "socket.io";
-import { SocketService } from "../services/Socket.js";
+import type { Socket } from "socket.io";
+import type { SocketService } from "../services/Socket.js";
 import { Events } from "../types/Events.js";
 import { Event } from "../structures/Event.js";
 
