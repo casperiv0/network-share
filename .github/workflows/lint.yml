@@ -3,7 +3,7 @@ name: ESlint
 on: [push, pull_request]
 
 jobs:
-  eslint:
+  ESLint:
     runs-on: ubuntu-latest
 
     strategy:
@@ -11,14 +11,16 @@ jobs:
         node-version: [16.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          cache: npm
+          cache: yarn
+          cache-dependency-path: yarn.lock
           node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
-        run: yarn --immutable
+        run: yarn install --immutable
+
       - name: Run lint
-        run: yarn run lint
+        run: yarn lint
