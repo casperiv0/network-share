@@ -14,13 +14,6 @@ export default class USER_JOIN extends Event {
     }
 
     this.service.io.emit(Events.UserJoin, this.service.users.size);
-
-    const files = [...this.service.files]
-      .flatMap((v) => {
-        return v[1];
-      })
-      .filter((v) => typeof v !== "string");
-
-    socket.emit(Events.FileUpload, { files });
+    this.service.io.emit(Events.FileUpload);
   }
 }

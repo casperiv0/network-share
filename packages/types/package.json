@@ -19,6 +19,7 @@
     "entry": [
       "src/**/*.ts"
     ],
+    "sourcemap": true,
     "platform": "node",
     "target": "node16",
     "dts": true,
