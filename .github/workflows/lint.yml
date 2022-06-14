@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           cache: yarn
-          cache-dependency-path: yarn.lock
+          cache-dependency-path: _yarn.lock
           node-version: ${{ matrix.node-version }}
 
       - name: Turbo Cache
