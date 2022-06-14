@@ -16,7 +16,7 @@
     "socket.io": "^4.5.1"
   },
   "devDependencies": {
-    "@network-share/types": "workspace:*",
+    "@network-share/types": "0.0.0",
     "@swc/cli": "^0.1.57",
     "@swc/core": "^1.2.198",
     "@swc/helpers": "^0.3.17",

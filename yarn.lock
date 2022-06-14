@@ -186,7 +186,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@network-share/api@workspace:apps/api"
   dependencies:
-    "@network-share/types": "workspace:*"
+    "@network-share/types": 0.0.0
     "@swc/cli": ^0.1.57
     "@swc/core": ^1.2.198
     "@swc/helpers": ^0.3.17
@@ -208,7 +208,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@network-share/types@workspace:*, @network-share/types@workspace:packages/types":
+"@network-share/types@0.0.0, @network-share/types@workspace:packages/types":
   version: 0.0.0-use.local
   resolution: "@network-share/types@workspace:packages/types"
   dependencies:
@@ -222,7 +222,7 @@ __metadata:
   resolution: "@network-share/web@workspace:apps/web"
   dependencies:
     "@casper124578/useful": ^2.0.1
-    "@network-share/types": "workspace:*"
+    "@network-share/types": 0.0.0
     "@types/react": ^18.0.12
     "@types/react-dom": ^18.0.5
     autoprefixer: ^10.4.7
