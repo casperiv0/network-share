@@ -43,7 +43,12 @@ export const Incoming = () => {
   }, []);
 
   return (
-    <div className="border-t-2 pt-4 border-gray-300 overflow-auto h-[50vh]">
+    <div
+      className={[
+        "border-t-2 pt-4 border-gray-300 overflow-auto h-[50vh]",
+        files.length <= 0 ? "flex flex-col justify-center" : "",
+      ].join(" ")}
+    >
       {files.length <= 0 ? (
         <p className="text-white text-center">
           Files will show here when there are any. Click any of them to download it!
@@ -54,17 +59,17 @@ export const Incoming = () => {
             return (
               <button
                 key={file.size * Math.random() * 20}
-                className="overflow-hidden h-full rounded-md m-1 text-white bg-darker-gray max-w-md"
+                className="h-full overflow-hidden rounded-md m-1 text-white bg-darker-gray max-w-md px-4 py-2 hover:bg-darker-gray/60 transition-colors"
                 onClick={(e) => handleDownload(e, file)}
                 title="Click to download"
               >
                 {file.type.startsWith("video") ? (
-                  <video controls src={file.preview} />
+                  <video className="rounded-sm my-2" controls src={file.preview} />
                 ) : file.type.startsWith("image") ? (
-                  <img loading="lazy" src={file.preview} />
+                  <img className="rounded-sm my-2" loading="lazy" src={file.preview} />
                 ) : null}
 
-                <p className="p-3">{file.name}</p>
+                <p>{file.name}</p>
               </button>
             );
           })}
