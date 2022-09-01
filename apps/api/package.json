@@ -18,7 +18,7 @@
   "devDependencies": {
     "@network-share/types": "0.0.0",
     "@swc/cli": "^0.1.57",
-    "@swc/core": "^1.2.220",
+    "@swc/core": "^1.2.245",
     "@swc/helpers": "^0.4.3",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
