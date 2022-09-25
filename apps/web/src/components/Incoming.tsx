@@ -55,24 +55,22 @@ export const Incoming = () => {
         </p>
       ) : (
         <div className="flex flex-wrap">
-          {files.map((file) => {
-            return (
-              <button
-                key={file.size * Math.random() * 20}
-                className="h-full overflow-hidden rounded-md m-1 text-white bg-darker-gray max-w-md px-4 py-2 hover:bg-darker-gray/60 transition-colors"
-                onClick={(e) => handleDownload(e, file)}
-                title="Click to download"
-              >
-                {file.type.startsWith("video") ? (
-                  <video className="rounded-sm my-2" controls src={file.preview} />
-                ) : file.type.startsWith("image") ? (
-                  <img className="rounded-sm my-2" loading="lazy" src={file.preview} />
-                ) : null}
+          {files.map((file) => (
+            <button
+              key={file.size * Math.random() * 20}
+              className="h-full overflow-hidden rounded-md m-1 text-white bg-darker-gray max-w-md px-4 py-2 hover:bg-darker-gray/60 transition-colors"
+              onClick={(e) => handleDownload(e, file)}
+              title="Click to download"
+            >
+              {file.type.startsWith("video") ? (
+                <video controls className="rounded-sm my-2" src={file.preview} />
+              ) : file.type.startsWith("image") ? (
+                <img className="rounded-sm my-2" loading="lazy" src={file.preview} />
+              ) : null}
 
-                <p>{file.name}</p>
-              </button>
-            );
-          })}
+              <p>{file.name}</p>
+            </button>
+          ))}
         </div>
       )}
     </div>

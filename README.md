@@ -15,7 +15,6 @@ I wanted to learn more so decided to make my own!
 
 [View a preview video here](https://youtu.be/hIOLE4cHqNE)
 
-
 ## What I learnd
 
 - Better usage of TailwindCSS
