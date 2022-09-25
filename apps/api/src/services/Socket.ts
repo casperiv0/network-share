@@ -53,6 +53,7 @@ export class SocketService {
       });
     });
 
+    this.server.get("/", this.rootHandler.bind(this));
     this.server.post("/upload", this.handleFileUpload.bind(this));
   }
 
@@ -73,5 +74,9 @@ export class SocketService {
 
     this.io.sockets.emit(Events.FileUpload);
     return res.status(204).send();
+  }
+
+  async rootHandler(_: Request, res: Response) {
+    return res.redirect("https://network-share.up.railway.app");
   }
 }
