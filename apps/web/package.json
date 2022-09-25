@@ -15,7 +15,7 @@
     "socket.io-client": "^4.5.2"
   },
   "devDependencies": {
-    "@network-share/types": "1.0.1",
+    "@network-share/types": "workspace:0.0.0",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "autoprefixer": "^10.4.12",
