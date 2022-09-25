@@ -12,6 +12,7 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,css,json}\" --ignore-path .gitignore",
     "lint": "eslint . --ext .ts,.js,.tsx,.jsx",
     "dev": "yarn turbo run dev --parallel",
+    "start": "yarn turbo run start --parallel --ignore types",
     "build": "yarn turbo run build"
   },
   "devDependencies": {

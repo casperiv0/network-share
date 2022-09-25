@@ -11,6 +11,12 @@
       ],
       "cache": true
     },
+    "start": {
+      "dependsOn": [
+        "^start"
+      ],
+      "cache": false
+    },
     "dev": {
       "dependsOn": [
         "^dev"
