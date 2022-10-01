@@ -18,7 +18,7 @@
   "devDependencies": {
     "@network-share/types": "workspace:0.0.0",
     "@swc/cli": "^0.1.57",
-    "@swc/core": "^1.3.3",
+    "@swc/core": "^1.3.4",
     "@swc/helpers": "^0.4.11",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.14",
