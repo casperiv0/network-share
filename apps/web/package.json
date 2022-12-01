@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@network-share/types": "workspace:0.0.0",
-    "@types/react": "^18.0.21",
+    "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.6",
     "autoprefixer": "^10.4.12",
     "postcss": "^8.4.16",
